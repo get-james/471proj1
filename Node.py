@@ -1,8 +1,9 @@
 class Node:
+    h = 0
     def __init__(self, state, parent):
         self.state = state
         self.parent = parent
-        self.h = 0
+
 
     def __eq__(self, other):
         if self.state == other.state:
@@ -10,4 +11,8 @@ class Node:
 
 
     def set_h(self, heuristic):
-        h = heuristic
+        self.h = heuristic
+
+
+    def get_h(self):
+        return self.h

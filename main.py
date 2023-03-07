@@ -57,6 +57,37 @@ def perform_manhattan_operations(n):
             openlist.insert(newNode)
 
 
+def perform_astar_operations(n):
+    parent_h = n.h
+    newNode = Node.Node(operations.shift_left(n.state), n)
+    check_for_goal_state(newNode)
+    if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
+        m_heuristic(newNode)
+        newh = newNode.h + parent_h
+        newNode.h = newh
+        openlist.insert(newNode)
+    newNode = Node.Node(operations.shift_up(n.state), n)
+    check_for_goal_state(newNode)
+    if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
+        m_heuristic(newNode)
+        newh = newNode.h + parent_h
+        newNode.h = newh
+        openlist.insert(newNode)
+    newNode = Node.Node(operations.shift_down(n.state), n)
+    check_for_goal_state(newNode)
+    if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
+        m_heuristic(newNode)
+        newh = newNode.h + parent_h
+        newNode.h = newh
+        openlist.insert(newNode)
+    newNode = Node.Node(operations.shift_right(n.state), n)
+    check_for_goal_state(newNode)
+    if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
+        m_heuristic(newNode)
+        newh = newNode.h + parent_h
+        newNode.h = newh
+        openlist.insert(newNode)
+
 # checks to see if node is goal state and if it is it adds all its ancestors to a list then outputs all the succesive states
 def check_for_goal_state(n):
     if n.state == goalState:
@@ -90,7 +121,7 @@ def m_heuristic(n):
     for i in range(len(n.state)):
         if n.state[i] != 0:
             h += abs((n.state[i]-1)-i)
-    n.set_h = h
+    n.h = h
 
 
 def h_heuristic(n):
@@ -99,7 +130,7 @@ def h_heuristic(n):
         if n.state[i] != 0:
             if n.state[i]-1 != i:
                 h = h+1
-    n.set_h = h
+    n.h = h
 
 
 
@@ -110,4 +141,10 @@ def bestfs():
         perform_manhattan_operations(n)
 
 
-bestfs()
+def astar_search():
+    while(openlist.queue):
+        n = openlist.delete()
+        closedlist.append(n)
+        perform_astar_operations(n)
+
+astar_search()
