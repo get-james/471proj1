@@ -63,29 +63,33 @@ def perform_astar_operations(n):
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_g
+        newNode.g = newNode.g + parent_g
+        newh = newNode.h + newNode.g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_up(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_g
+        newNode.g = newNode.g + parent_g
+        newh = newNode.h + newNode.g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_down(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_g
+        newNode.g = newNode.g + parent_g
+        newh = newNode.h + newNode.g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_right(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_g
-        newNode.h = newh
+        newNode.g = newNode.g + parent_g
+        newh = newNode.h + newNode.g
+        newNode.h = newhnewh = newNode.h + parent_g
         openlist.insert(newNode)
 
 # checks to see if node is goal state and if it is it adds all its ancestors to a list then outputs all the succesive states
@@ -98,6 +102,9 @@ def check_for_goal_state(n):
         while goal_list:
             print(goal_list.pop().state)
         print("goal state found woohoo")
+        print("closed list:")
+        while closedlist:
+            print(closedlist.pop(0).state)
         quit()
 
 
@@ -150,7 +157,7 @@ def astar_search():
         closedlist.append(n)
         perform_astar_operations(n)
 
-astar_search()
-#bestfs()
+#astar_search()
+bestfs()
 #bfs_search()
 #dfs_search()
