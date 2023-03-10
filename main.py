@@ -101,19 +101,6 @@ def check_for_goal_state(n):
         quit()
 
 
-def dfs_search():
-    while(openlist):
-        n = openlist.pop()
-        #print(n.state)
-        closedlist.append(n)
-        perform_operations(n)
-
-
-def bfs_search():
-    while(openlist):
-        n = openlist.pop(0)
-        closedlist.append(n)
-        perform_operations(n)
 
 # calculates hamming distance of each node and attributes it to its heuristic attribute
 def m_heuristic(n):
@@ -132,8 +119,24 @@ def h_heuristic(n):
                 h = h+1
     n.h = h
 
+#   depth first search
+def dfs_search():
+    while(openlist):
+        n = openlist.pop()
+        #print(n.state)
+        closedlist.append(n)
+        perform_operations(n)
 
 
+#   breadth first search
+def bfs_search():
+    while(openlist):
+        n = openlist.pop(0)
+        closedlist.append(n)
+        perform_operations(n)
+
+
+#   best first search
 def bestfs():
     while(openlist.queue):
         n = openlist.delete()
@@ -147,4 +150,7 @@ def astar_search():
         closedlist.append(n)
         perform_astar_operations(n)
 
-astar_search()
+#astar_search()
+#bestfs()
+#bfs_search()
+dfs_search()

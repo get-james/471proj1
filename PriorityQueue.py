@@ -30,5 +30,9 @@ class PriorityQueue(object):
             exit()
 
 
-    def pop(self):
-        return self.queue.pop()
+
+    def pop(self, index = None):
+        if index != None:
+            return self.queue.pop(index)
+        else:
+            return self.queue.pop()
