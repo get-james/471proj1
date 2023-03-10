@@ -1,5 +1,6 @@
 class Node:
     h = 0
+    g = 1
     def __init__(self, state, parent):
         self.state = state
         self.parent = parent

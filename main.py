@@ -58,33 +58,33 @@ def perform_manhattan_operations(n):
 
 
 def perform_astar_operations(n):
-    parent_h = n.h
+    parent_g = n.g
     newNode = Node.Node(operations.shift_left(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_h
+        newh = newNode.h + parent_g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_up(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_h
+        newh = newNode.h + parent_g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_down(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_h
+        newh = newNode.h + parent_g
         newNode.h = newh
         openlist.insert(newNode)
     newNode = Node.Node(operations.shift_right(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
         m_heuristic(newNode)
-        newh = newNode.h + parent_h
+        newh = newNode.h + parent_g
         newNode.h = newh
         openlist.insert(newNode)
 
@@ -150,7 +150,7 @@ def astar_search():
         closedlist.append(n)
         perform_astar_operations(n)
 
-#astar_search()
+astar_search()
 #bestfs()
 #bfs_search()
-dfs_search()
+#dfs_search()
