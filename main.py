@@ -89,7 +89,7 @@ def perform_astar_operations(n):
         m_heuristic(newNode)
         newNode.g = newNode.g + parent_g
         newh = newNode.h + newNode.g
-        newNode.h = newhnewh = newNode.h + parent_g
+        newNode.h = newh
         openlist.insert(newNode)
 
 # checks to see if node is goal state and if it is it adds all its ancestors to a list then outputs all the succesive states
