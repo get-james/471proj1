@@ -8,10 +8,11 @@ def path_down(n):
         successor[n.head[0] + 1] [n.head[1]] = PathNode.PathNode(n.i)
         return NumberLinkNode.NumberLinkNode(successor, n, next_head, n.i)
     if n.head[0] > 0 and n.state[n.head[0] + 1][n.head[1]] == n.i:
-        successor = list(state)
+        successor = list(n.state)
         i = n.i + 1
-        if i == 6:
+        if i == 8:
             print("goal state found")
+            print(n)
             return
         head = find_head(successor,i)
         return NumberLinkNode.NumberLinkNode(successor, n, head, i)
@@ -21,9 +22,9 @@ def find_head(state, i):
     head = [-1,-1]
     for y in range(len(state)):
         try:
-            if state[y].index(1) != None:
+            if state[y].index(i) != None:
                 head[0] = y
-                head[1] = state[y].index(1)
+                head[1] = state[y].index(i)
                 return head
         except ValueError:
             continue

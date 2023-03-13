@@ -11,3 +11,13 @@ class NumberLinkNode:
     def __eq__(self, other):
         if self.state == other.state:
             return True
+
+
+    def __str__(self):
+        stringform = ""
+        for y in range(len(self.state)):
+            for x in range(len(self.state[y])):
+                stringform += str(self.state[y][x]) + " "
+
+            stringform += "\n"
+        return stringform

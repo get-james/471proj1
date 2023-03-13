@@ -7,6 +7,14 @@ initial_state = [[0,0,0,4,0,0,0],
                 [0,0,0,0,0,0,0],
                 [0,0,1,0,0,0,0],
                 [2,0,0,0,4,0,0]]
+
+initial_state2 =[[1,2,3,4,5,6,7],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0],
+                [1,2,3,4,5,6,7]]
 open_list = []
 closed_list = []
 def state_generator(n):
@@ -25,8 +33,8 @@ def search():
 
 
 def main():
-    head = operations.find_head(initial_state, 1)
-    startNode = NumberLinkNode.NumberLinkNode(initial_state, None, head, 1)
+    head = operations.find_head(initial_state2, 1)
+    startNode = NumberLinkNode.NumberLinkNode(initial_state2, None, head, 1)
     open_list.append(startNode)
     search()
 
