@@ -8,4 +8,4 @@ class PathNode:
 
 
     def __str__(self):
-        return "." + str(self.pathnumber)
+        return str(self.pathnumber)
