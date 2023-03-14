@@ -5,7 +5,7 @@ import copy
 def path_up(n):
     next_head = copy.deepcopy(n.head)
     next_head[0] = n.head[0] - 1
-    if n.head[0] > 0 and n.state[n.head[0] - 1][n.head[1]] == 0:
+    if n.head[0] > 0 and n.state[n.head[0] - 1][n.head[1]] == 0:#making sure there's no path node in the way
         successor = copy.deepcopy(n.state)
         successor[n.head[0] - 1] [n.head[1]] = PathNode.PathNode(n.i)
         newNode = NumberLinkNode.NumberLinkNode(successor, n, next_head, n.i, n.tail, n.endpoint, n.ih)

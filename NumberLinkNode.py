@@ -4,7 +4,10 @@ class NumberLinkNode:
     g = 0
     head = []
     endpoint = []
-
+# state is the 2d board, parent is the Node with the preceding state, head is the head of the path, tail is the
+    #point of origin of the path, i is the current number were trying to find the path between, endpoint is the second
+    #occurence of the number in the board, ih is the inherited heuristic. it's the manhattan value for all the other
+    #numbers other than the current i.
     def __init__(self, state, parent, head, i, tail, endpoint, ih=0):
         self.state = state
         self.parent = parent
