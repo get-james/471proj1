@@ -34,23 +34,80 @@ def clistcheck(n):
         else:
             return False
 def state_generator(n):
+
     newNode = operations.path_up(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
     if newNode is not None and not listcheck(newNode):
         open_list.insert(newNode)
     newNode = operations.path_right(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
     if newNode is not None and not listcheck(newNode):
         open_list.insert(newNode)
     newNode = operations.path_left(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
     if newNode is not None and not listcheck(newNode):
         open_list.insert(newNode)
     newNode = operations.path_down(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
     if newNode is not None and not listcheck(newNode):
+        open_list.insert(newNode)
+
+def Astar_state_generator(n):
+
+    newNode = operations.path_up(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
+    if newNode is not None and not listcheck(newNode):
+        newNode.g += n.g
+        newNode.h += newNode.g
+        open_list.insert(newNode)
+    newNode = operations.path_right(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
+    if newNode is not None and not listcheck(newNode):
+        newNode.g += n.g
+        newNode.h += newNode.g
+        open_list.insert(newNode)
+    newNode = operations.path_left(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
+    if newNode is not None and not listcheck(newNode):
+        newNode.g += n.g
+        newNode.h += newNode.g
+        open_list.insert(newNode)
+    newNode = operations.path_down(n)
+    if newNode is not None and newNode.i == 6:
+        print("goal state found!!")
+        print(newNode)
+        goal_state_found()
+    if newNode is not None and not listcheck(newNode):
+        newNode.g += n.g
+        newNode.h += newNode.g
         open_list.insert(newNode)
 def search():
     while open_list:
         n = open_list.delete()
         closed_list.append(n)
         state_generator(n)
+        #Astar_state_generator(n)
     print("done")
 
 
@@ -65,6 +122,9 @@ def go():
     open_list.insert(startNode)
     search()
 
+def goal_state_found():
+    print(len(closed_list))
+    quit()
 if __name__ == '__main__':
     go()
 

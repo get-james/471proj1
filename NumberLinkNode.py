@@ -8,16 +8,16 @@ class NumberLinkNode:
     #point of origin of the path, i is the current number were trying to find the path between, endpoint is the second
     #occurence of the number in the board, ih is the inherited heuristic. it's the manhattan value for all the other
     #numbers other than the current i.
-    def __init__(self, state, parent, head, i, tail, endpoint, ih=0):
+    def __init__(self, state, parent, head, i, tail, endpoint, ih=0, g = 1):
         self.state = state
         self.parent = parent
         self.head = head
         self.i = i
         self.tail = tail
         self.endpoint = endpoint
-        self.h = ih #inherited heuristic. base heuristic for that i. so we don't need to calculate the overall manhattan distance every time
-        self.ih = ih
-
+        self.h = ih
+        self.ih = ih#inherited heuristic. base heuristic for that i. so we don't need to calculate the overall manhattan distance every time
+        self.g = g
     def __eq__(self, other):
         if self.state == other.state:
             return True

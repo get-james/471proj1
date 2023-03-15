@@ -16,9 +16,9 @@ def path_up(n):
         successor = copy.deepcopy(n.state)
         i = n.i + 1
         if i == 6:
-            print("goal state found")
-            print(n)
-            quit()
+            n.i = 6
+            return n
+            #quit()
         head = find_head(successor,i)
         ep = find_endpoint(successor, i)
 
@@ -44,9 +44,8 @@ def path_right(n):
         successor = copy.deepcopy(n.state)
         i = n.i + 1
         if i == 6:
-            print("goal state found")
-            print(n)
-            quit()
+            n.i = 6
+            return n
         head = find_head(successor,i)
         ep = find_endpoint(successor, i)
         newNode = NumberLinkNode.NumberLinkNode(successor, n, head, i, head, ep)
@@ -71,9 +70,9 @@ def path_left(n):
         successor = copy.deepcopy(n.state)
         i = n.i + 1
         if i == 6:
-            print("goal state found")
-            print(n)
-            quit()
+            n.i = 6
+            return n
+           # quit()
         head = find_head(successor, i)
         ep = find_endpoint(successor, i)
         newNode = NumberLinkNode.NumberLinkNode(successor, n, head, i, head, ep)
@@ -98,9 +97,9 @@ def path_down(n):
         successor = copy.deepcopy(n.state)
         i = n.i + 1
         if i == 6:
-            print("goal state found")
-            print(n)
-            quit()
+            n.i = 6
+            return n
+          #  quit()
         head = find_head(successor, i)
         ep = find_endpoint(successor, i)
         newNode = NumberLinkNode.NumberLinkNode(successor, n, head, i, head, ep)
@@ -154,4 +153,5 @@ def all_manhattan_distance(n):
         h += abs(head[1] - endpoint[1])
         i += 1
     return h
+
 
