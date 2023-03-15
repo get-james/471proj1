@@ -3,7 +3,7 @@ import Node
 import PriorityQueue
 
 goalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
-initialState = [2, 3, 6, 1, 4, 0, 7, 5, 8]
+initialState = [4, 1, 3, 7, 0, 5, 8, 2, 6]
 startNode = Node.Node(initialState, None)
 openlist = PriorityQueue.PriorityQueue()
 openlist.insert(startNode)
@@ -38,22 +38,22 @@ def perform_manhattan_operations(n):
         newNode = Node.Node(operations.shift_left(n.state), n)
         check_for_goal_state(newNode)
         if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-            m_heuristic(newNode)
+            h_heuristic(newNode)
             openlist.insert(newNode)
         newNode = Node.Node(operations.shift_up(n.state), n)
         check_for_goal_state(newNode)
         if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-            m_heuristic(newNode)
+            h_heuristic(newNode)
             openlist.insert(newNode)
         newNode = Node.Node(operations.shift_down(n.state), n)
         check_for_goal_state(newNode)
         if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-            m_heuristic(newNode)
+            h_heuristic(newNode)
             openlist.insert(newNode)
         newNode = Node.Node(operations.shift_right(n.state), n)
         check_for_goal_state(newNode)
         if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-            m_heuristic(newNode)
+            h_heuristic(newNode)
             openlist.insert(newNode)
 
 
@@ -62,7 +62,7 @@ def perform_astar_operations(n):
     newNode = Node.Node(operations.shift_left(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-        m_heuristic(newNode)
+        h_heuristic(newNode)
         newNode.g = newNode.g + parent_g
         newh = newNode.h + newNode.g
         newNode.h = newh
@@ -70,7 +70,7 @@ def perform_astar_operations(n):
     newNode = Node.Node(operations.shift_up(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-        m_heuristic(newNode)
+        h_heuristic(newNode)
         newNode.g = newNode.g + parent_g
         newh = newNode.h + newNode.g
         newNode.h = newh
@@ -78,7 +78,7 @@ def perform_astar_operations(n):
     newNode = Node.Node(operations.shift_down(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-        m_heuristic(newNode)
+        h_heuristic(newNode)
         newNode.g = newNode.g + parent_g
         newh = newNode.h + newNode.g
         newNode.h = newh
@@ -86,7 +86,7 @@ def perform_astar_operations(n):
     newNode = Node.Node(operations.shift_right(n.state), n)
     check_for_goal_state(newNode)
     if newNode.state != None and openlist.queue.count(newNode) < 1 and closedlist.count(newNode) < 1:
-        m_heuristic(newNode)
+        h_heuristic(newNode)
         newNode.g = newNode.g + parent_g
         newh = newNode.h + newNode.g
         newNode.h = newh
@@ -109,7 +109,7 @@ def check_for_goal_state(n):
 
 
 
-# calculates hamming distance of each node and attributes it to its heuristic attribute
+# calculates manhattan distance of each node and attributes it to its heuristic attribute
 def m_heuristic(n):
     h = 0
     for i in range(len(n.state)):
@@ -117,7 +117,7 @@ def m_heuristic(n):
             h += abs((n.state[i]-1)-i)
     n.h = h
 
-
+#hamming distance
 def h_heuristic(n):
     h = 0
     for i in range(len(n.state)):
@@ -157,7 +157,7 @@ def astar_search():
         closedlist.append(n)
         perform_astar_operations(n)
 
-#astar_search()
-bestfs()
+astar_search()
+#bestfs()
 #bfs_search()
 #dfs_search()
